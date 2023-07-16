@@ -49,6 +49,7 @@ char* show(int n,int r,char **c,int *t,void **v) {
 
   /* lengths */
   for(i=0;i<n;i++) {
+    cc[i].m=strlen(cc[i].c);
     for(j=0;j<r;j++) {
       k=strlen(cc[i].o[j]);
       if(cc[i].m<k) cc[i].m=k;

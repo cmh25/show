@@ -2,7 +2,6 @@
 #define SHOW_H
 
 typedef struct {
-  int r;    /* rows */
   char *c;  /* title */
   int t;    /* type 1=int,2=double,3=char,4=char* */
   void *v;  /* data */

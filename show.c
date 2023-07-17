@@ -32,12 +32,7 @@ char* show(int n,int r,char **c,int *t,void **v) {
 
   /* string representation of column data */
   for(i=0;i<n;i++) {
-    cc[i].t=t[i];
-    cc[i].r=r;
-    cc[i].c=c[i];
-    cc[i].v=v[i];
-    cc[i].o=xmalloc(r*sizeof(char*));
-    cc[i].m=0;
+    cc[i] = (col){c[i],t[i],v[i],xmalloc(r*sizeof(char*)),0};
     switch(t[i]) {
     case 1: for(j=0;j<r;j++) { sprintf(b,"%d",((int*)cc[i].v)[j]); cc[i].o[j]=xstrdup(b); } break;
     case 2: for(j=0;j<r;j++) { sprintf(b,"%0.*g",15,((double*)cc[i].v)[j]); cc[i].o[j]=xstrdup(b); } break;
@@ -50,10 +45,7 @@ char* show(int n,int r,char **c,int *t,void **v) {
   /* lengths */
   for(i=0;i<n;i++) {
     cc[i].m=strlen(cc[i].c);
-    for(j=0;j<r;j++) {
-      k=strlen(cc[i].o[j]);
-      if(cc[i].m<k) cc[i].m=k;
-    }
+    for(j=0;j<r;j++) { k=strlen(cc[i].o[j]); if(cc[i].m<k) cc[i].m=k; }
     p+=(r+2)*(cc[i].m+n+1);
   }
 
@@ -72,10 +64,7 @@ char* show(int n,int r,char **c,int *t,void **v) {
     k+=sprintf(a+k,"\n");
   }
 
-  for(i=0;i<n;i++) {
-    for(j=0;j<r;j++) free(cc[i].o[j]);
-    free(cc[i].o);
-  }
+  for(i=0;i<n;i++) { for(j=0;j<r;j++) free(cc[i].o[j]); free(cc[i].o); }
   free(cc);
 
   return a;

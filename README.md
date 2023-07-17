@@ -1,5 +1,5 @@
 # show
-Formatted display of a table of data.
+Formatted display of a table in c.
 
 Based on Stevan Apter's show function in k:
 https://nsl.com/k/show.k

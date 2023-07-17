@@ -1,5 +1,10 @@
 # show
-Formatted display of a table of data. Ex:
+Formatted display of a table of data.
+
+Based on Stevan Apter's show function in k:
+https://nsl.com/k/show.k
+
+Ex:
 ```
 name  age city          state score
 ----- --- ------------- ----- -----
